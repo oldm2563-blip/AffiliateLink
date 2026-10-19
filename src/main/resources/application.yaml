@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: affiliatelink
+  jpa:
+    hibernate:
+      ddl-auto: validate
+  flyway:
+    enabled: true
