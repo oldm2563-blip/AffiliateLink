@@ -1,6 +1,7 @@
 package ma.youcode.affiliatelink.common.web;
 
 import ma.youcode.affiliatelink.common.exceptions.BusinessRuleException;
+import ma.youcode.affiliatelink.common.exceptions.EmailAlreadyExistsException;
 import ma.youcode.affiliatelink.common.exceptions.ResourcesNotFoundException;
 import ma.youcode.affiliatelink.common.exceptions.ValidationException;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,10 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ApiError> handleValidation(ValidationException ex){
+        return build(HttpStatus.BAD_REQUEST, ex.getMessage(), List.of());
+    }
+    @ExceptionHandler(EmailAlreadyExistsException.class)
+    public ResponseEntity<ApiError> handleEmailExists(EmailAlreadyExistsException ex){
         return build(HttpStatus.BAD_REQUEST, ex.getMessage(), List.of());
     }
 
