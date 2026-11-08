@@ -24,6 +24,7 @@ public abstract class Profile {
     @Column(nullable = false, unique = true)
     protected String email;
 
+    @Builder.Default
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     protected Status status = Status.PENDING;
@@ -35,5 +36,11 @@ public abstract class Profile {
         this.email = email;
     }
 
+    @PrePersist
+    protected void onCreate() {
+        if (createdAt == null) {
+            createdAt = LocalDateTime.now();
+        }
+    }
     
 }
