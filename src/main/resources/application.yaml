@@ -1,8 +1,26 @@
 spring:
   application:
     name: affiliatelink
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/mydatabase
+    username: myuser
+    password: secret
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
   jpa:
     hibernate:
       ddl-auto: validate
+
   flyway:
     enabled: true
+
+  mail:
+    host: localhost
+    port: 1025
+
+logging:
+  file:
+    name: logs/affiliatelink.log
+  level:
+    ma.youcode.affiliatelink: DEBUG
